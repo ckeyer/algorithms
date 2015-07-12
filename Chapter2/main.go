@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-type sortFunc func(interface{})
+type sortFunc func(interface{}, ...int)
 type CkInt []int
 
 func (c CkInt) Len() int {
@@ -25,6 +25,9 @@ func (c CkInt) Swap(i, j int) {
 func getCkints(length int) CkInt {
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	r.Int()
+	// return CkInt{9, 8, 7, 6, 5, 4, 3, 2, 1, 0}6 9 7 8
+	// return CkInt{6, 9, 7, 8}
+	// return CkInt{5, 7, 9, 3, 6, 4, 1, 0, 2, 8}
 	ck := make(CkInt, length)
 	for i := 0; i < length; i++ {
 	loop_get_int:
@@ -54,6 +57,9 @@ func PerformanceTest(sortf sortFunc) {
 }
 
 func main() {
-	PerformanceTest(SelectionSort)
-	PerformanceTest(InsertionSort)
+	PerformanceTest(QuickSort)
+	PerformanceTest(ShellSort)
+	// PerformanceTest(SelectionSort)
+	fmt.Println()
+	// PerformanceTest(InsertionSort)
 }

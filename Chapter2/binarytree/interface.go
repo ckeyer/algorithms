@@ -9,19 +9,20 @@ type Interface interface {
 	AddRightNode(interface{})
 	GetRightNode() Interface
 	GetLeftNode() Interface
+	IsNil() bool
 	String() string
 }
 
 func PreOrder(t Interface) {
-	if t != nil {
-		fmt.Println(t.String() + ", ")
-		fmt.Printf("%#v\n", t)
-		PreOrder(t.GetLeftNode())
-		PreOrder(t.GetRightNode())
+	if t.IsNil() {
+		return
 	}
+	fmt.Println(t.String() + ", ")
+	PreOrder(t.GetLeftNode())
+	PreOrder(t.GetRightNode())
 }
 func InOrder(t Interface) {
-	if t == nil {
+	if t.IsNil() {
 		return
 	}
 	InOrder(t.GetLeftNode())
@@ -29,7 +30,7 @@ func InOrder(t Interface) {
 	InOrder(t.GetRightNode())
 }
 func PostOrder(t Interface) {
-	if t == nil {
+	if t.IsNil() {
 		return
 	}
 	PostOrder(t.GetRightNode())

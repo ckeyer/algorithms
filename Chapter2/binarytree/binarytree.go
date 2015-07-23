@@ -2,6 +2,7 @@ package binarytree
 
 import (
 	"fmt"
+	"reflect"
 )
 
 type BinaryTree struct {
@@ -10,21 +11,28 @@ type BinaryTree struct {
 	Data  interface{}
 }
 
-func (h *BinaryTree) AddRightNode(v interface{}) {
-	h.Right = &BinaryTree{Data: v}
+func NewRootNode(v interface{}) (b *BinaryTree) {
+	b = &BinaryTree{Data: v}
+	return
 }
-func (h *BinaryTree) AddLeftNode(v interface{}) {
-	h.Left = &BinaryTree{Data: v}
+func (b *BinaryTree) AddRightNode(v interface{}) {
+	b.Right = &BinaryTree{Data: v}
 }
-func (h *BinaryTree) GetLeftNode() Interface {
-	return h.Left
+func (b *BinaryTree) AddLeftNode(v interface{}) {
+	b.Left = &BinaryTree{Data: v}
 }
-func (h *BinaryTree) GetRightNode() Interface {
-	return h.Right
+func (b *BinaryTree) GetLeftNode() Interface {
+	return b.Left
 }
-func (h *BinaryTree) String() string {
-	if h != nil {
-		return fmt.Sprint(h.Data)
+func (b *BinaryTree) GetRightNode() Interface {
+	return b.Right
+}
+func (b *BinaryTree) IsNil() bool {
+	return reflect.ValueOf(b).IsNil()
+}
+func (b *BinaryTree) String() string {
+	if b != nil {
+		return fmt.Sprint(b.Data)
 	} else {
 		return ""
 	}

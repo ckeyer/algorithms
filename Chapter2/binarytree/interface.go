@@ -17,7 +17,7 @@ func PreOrder(t Interface) {
 	if t.IsNil() {
 		return
 	}
-	fmt.Println(t.String() + ", ")
+	fmt.Println(t.String())
 	PreOrder(t.GetLeftNode())
 	PreOrder(t.GetRightNode())
 }
@@ -26,7 +26,7 @@ func InOrder(t Interface) {
 		return
 	}
 	InOrder(t.GetLeftNode())
-	fmt.Println(t.String() + ", ")
+	fmt.Println(t.String())
 	InOrder(t.GetRightNode())
 }
 func PostOrder(t Interface) {
@@ -35,5 +35,5 @@ func PostOrder(t Interface) {
 	}
 	PostOrder(t.GetRightNode())
 	PostOrder(t.GetLeftNode())
-	fmt.Println(t.String() + ", ")
+	fmt.Println(t.String())
 }

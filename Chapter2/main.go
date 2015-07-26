@@ -27,7 +27,7 @@ func getCkints(length int) CkInt {
 	r.Int()
 	// return CkInt{9, 8, 7, 6, 5, 4, 3, 2, 1, 0}6 9 7 8
 	// return CkInt{6, 9, 7, 8}
-	// return CkInt{5, 7, 9, 3, 6, 4, 1, 0, 2, 8}
+	return CkInt{5, 7, 9, 3, 6, 4, 1, 0, 2, 8}
 	ck := make(CkInt, length)
 	for i := 0; i < length; i++ {
 	loop_get_int:
@@ -59,7 +59,8 @@ func PerformanceTest(sortf sortFunc) {
 func main() {
 	PerformanceTest(QuickSort)
 	PerformanceTest(ShellSort)
-	// PerformanceTest(SelectionSort)
+	PerformanceTest(SelectionSort)
+	PerformanceTest(HeapSort)
+	PerformanceTest(InsertionSort)
 	fmt.Println()
-	// PerformanceTest(InsertionSort)
 }
